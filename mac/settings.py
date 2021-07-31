@@ -28,7 +28,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','mistore.pythonanywhere.com']
 
 
 # Application definition
@@ -131,7 +131,7 @@ MEDIA_URL = '/media/'
 
 # LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'Login'
-ACCOUNT_LOGOUT_REDIRECT_URL ='/shop/login/' 
+ACCOUNT_LOGOUT_REDIRECT_URL ='/shop/login/'
 
 
 # RAZORPAY_API_KEY = 'rzp_test_l6sofBiGkljEyD'
