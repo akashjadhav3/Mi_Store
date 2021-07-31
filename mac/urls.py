@@ -32,5 +32,6 @@ urlpatterns = [
     path('product_creation/', views.product_creation.as_view(), name='product_creation'),
     path('product_update/<int:pk>/update/', views.ProductUpdate.as_view(), name='product_update'),
     path('product_list/', views.products_list, name='product_list'),
+    path('successfully_payment/', views.successfully_payment, name='successfully_payment'),
     path('product_delete/<int:pk>/del/', views.ProductDelete.as_view(), name='product_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -67,8 +67,9 @@
                     success: function (data) {
                         // var result = data.html;
                         // $('#L-'+id).html(result);
-                        alert("Payment Successfully")
-                        document.location = "/shop/index/";                   
+                        //alert("Payment Successfully")
+                        localStorage.clear();
+                        document.location = "/successfully_payment/";                   
                     }
                   });
 

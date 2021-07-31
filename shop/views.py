@@ -142,6 +142,7 @@ import razorpay
 from mac.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET
 client = razorpay.Client(auth=(RAZORPAY_API_KEY,RAZORPAY_API_SECRET))
 
+@login_required
 def checkout(request):
     isAdmin = IsAdminCheck(request.user)
     if request.method=="POST":

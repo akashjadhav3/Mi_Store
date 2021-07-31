@@ -126,3 +126,13 @@ def admin_site(request):
         return render(request, 'admin_sites.html',context)
     return redirect('ShopHome')
 
+
+def successfully_payment(request):
+    return HttpResponse("""<center>
+                            <div>
+                                <p style="color:green;margin-top: 150px;font-size: x-large;">Payment Successfully</p>
+                                <p style="color:blue;margin-top: 50px"><a href="/shop/">Back to Home</a></p>
+                            </div>
+    
+                        </center>""")
+
