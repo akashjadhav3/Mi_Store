@@ -3,10 +3,14 @@
 {% block body %}
 <div class="container">
     <div class="col my-4">
+    <div>
+        <a class="btn btn-info float-right" onclick="clerCart()">Clear cart</a>
+    </div>
         <h2>Step 1 - Mi Express Checkout - Review Your Cart Items</h2>
         <div class="my-4">
             <ul class="list-group" id="items">
             </ul>
+            
 
             <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
@@ -103,5 +107,12 @@ localStorage.clear();
 document.location = "/shop";
 {% endif %}
 $('#amount').val($('#totalPrice').html())
+</script>
+
+<script type="text/javascript">
+function clerCart(){
+    localStorage.clear();
+    window.location.reload()
+}
 </script>
 {% endblock %}
