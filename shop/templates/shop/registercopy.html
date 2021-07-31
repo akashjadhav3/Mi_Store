@@ -1,0 +1,57 @@
+{% extends 'shop/basic1.html' %}
+
+{% block title%} Sign-in -Mi Store{% endblock %}
+{% block body %}
+<style>
+    body{
+        color:black;
+        background:ghostwhite;
+        }
+    .btn1{
+        background-color:black;
+        color:white;
+        }
+</style>
+<div class="container my-3">
+    <h3>Sign up</h3>
+    <form action="/shop/register/" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
+  </div>
+
+        <div class="form-group">
+    <label for="name">Phone</label>
+    <input type="tel" class="form-control" id="phone" name='phone' placeholder="Enter Your Phone Number">
+  </div>
+
+  <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
+  </div>
+
+
+
+        <div class="form-group">
+    <label for="pass">Password (8 characters minimum):</label>
+    <input type="password" class="form-control" id="pass" name="password" placeholder="Enter Your Password" minlength="8" required>
+  </div>
+
+        <button type="submit" class="btn1">Submit</button>
+</form>
+
+
+
+</div>
+{% endblock %}
+
+{%block js%}
+<script>
+
+{% if thank %}
+alert('Thanks for Sign-in');
+document.location = "/shop/login";
+{%endif%}
+
+</script>
+{% endblock %}

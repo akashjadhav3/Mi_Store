@@ -1,0 +1,41 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Order Approval{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h2 class="">Receipt</h2>
+      <div>
+            Product :{{obj.items_json}}</br>
+            Name: {{obj.name}}</br>
+            Email: {{obj.email}}</br>
+            Address: {{obj.address}}</br>
+            City: {{obj.city}}</br>
+            State: {{obj.state}}</br>
+            Zip Code: {{obj.zip_code}}</br>
+            Phone: {{obj.phone}}</br>
+            Date: {{obj.created}}</br>
+            Order Amount: <b>{{obj.amount}}</b></br>
+    </div>
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  {% endblock %}

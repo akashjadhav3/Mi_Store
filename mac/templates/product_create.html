@@ -1,0 +1,42 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Order Approval{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h2 class="text-center">Product</h2>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h3><li  {% if message.tags %} class="text-{{ message.tags }} text-center" {% endif %}> {{ message }} </li></h3>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
+
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  {% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} ContactUs admin Details{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h1 class="text-center">Contacts us Admin Details</h1>
+      {% for i in info %}
+        <ul>
+            <li>Name: {{i.name}}</li>
+            <li>Email: {{i.email}}</li>
+            <li>Description: {{i.desc}}</li>
+            <li>Phone: {{i.phone}}</li>
+        </ul>
+
+    {% endfor %}
+
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  
+  
+  
+  {% endblock %}

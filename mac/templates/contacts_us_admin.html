@@ -1,0 +1,36 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Contanct us Admin{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h2 class="text-center">Contacts us Admin</h2>
+      {% for i in info %}
+        <h3><a href="{% url 'contact_us_admin_details' id=i.pk %}">{{i.name}} </a></h3>
+    {% endfor %}
+
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  
+  
+  
+  {% endblock %}

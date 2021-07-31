@@ -1,0 +1,114 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Order Approval{% endblock %}
+
+
+{% block body %}
+<style>
+  body {
+    background-color: ghostwhite;
+  }
+
+  .jumbotron {
+    background-color: white;
+  }
+</style>
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h2 class="text-center">Payment</h2>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <h3>
+          <li {% if message.tags %} class="text-{{ message.tags }} text-center" {% endif %}> {{ message }} </li>
+        </h3>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="POST">
+        {% csrf_token %}
+        <div class="text-center">{{amount}} </br>
+        <button type="submit" class="btn btn-success" id="rzp-button1">Pay Now</button></div>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+          var options = {
+            "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
+            "name": "{{name}}",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+              // alert(response.razorpay_payment_id);
+              // alert(response.razorpay_order_id);
+              // alert(response.razorpay_signature)
+              var payment_id = response.razorpay_payment_id
+              var order_id = response.razorpay_order_id
+              var signature = response.razorpay_signature
+              // var prod_order_id = "{{model_id}}",
+              var url = "{% url 'payment_success' %}";
+              // alert(prod_order_id)
+              // alert(url)
+
+              $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: {
+                    
+                      "payment_id": payment_id,
+                      "order_id": order_id,
+                      "signature":signature,
+                      "csrfmiddlewaretoken": "{{ csrf_token }}"
+
+                    },
+                    success: function (data) {
+                        // var result = data.html;
+                        // $('#L-'+id).html(result);
+                        alert("Payment Successfully")
+                        document.location = "/shop/index/";                   
+                    }
+                  });
+
+            },
+            "prefill": {
+              "name": "{{name}}",
+              "email": "akash@gmail.com",
+              "contact": "{{phone}}"
+            },
+            "notes": {
+              "address": "{{address}}"
+            },
+            "theme": {
+              "color": "#3399cc"
+            }
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+          });
+          document.getElementById('rzp-button1').onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+          }
+        </script>
+
+
+
+      </form>
+      <hr>
+
+    </div> <!-- /container -->
+
+</main>
+
+
+{% endblock %}

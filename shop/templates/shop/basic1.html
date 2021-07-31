@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+       {% block css %} {% endblock %}
+     </style>
+  </head>
+  <body>
+  <style>
+    .footer {
+        background: #000;
+        color: #8a8a8a;
+        font-size: 12px;
+        padding: 40px 0 5px;
+}
+
+    .footer p {
+        color: #8a8a8a;
+}
+
+    .footer h3 {
+        color: #fff;
+        margin-bottom: 10px;
+}
+
+    .footer-col-1,
+    .footer-col-2,
+    .footer-col-3,
+    .footer-col-4 {
+        min-width: 250px;
+        margin-bottom: 20px;
+}
+
+    .footer-col-1 {
+        flex-basis: 30%;
+}
+
+    .footer-col-2 {
+        flex: 1;
+        text-align: center;
+}
+
+    .footer-col-2 img {
+        width: 180px;
+        margin-bottom: 20px;
+}
+
+    .footer-col-3,
+    .footer-col-4 {
+        flex-basis: 12%;
+        text-align: center;
+}
+
+    ul {
+        list-style-type: none;
+}
+
+    .copyright {
+        text-align: center;
+}
+
+        .menu-icon {
+        width: 28px;
+        margin-left: 20px;
+        display: none;
+}
+   </style>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  {% load static %}<a href="% url 'ShopHome' %}" class="navbar-brand"> <img src="{% static 'shop/media/mi.png' %}" style="width:55px;height:36px;"  /> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {% if user.is_authenticated %}
+        <p class="text-danger">Welcome, {{ user.get_username }} <a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+      <button style='margin-right:16px' class="btn btn-outline-success my-2 my-sm-0" margin="2px" type="submit" onclick="location.href='/shop/login';"  >Log in</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" margin="2px" type="submit" onclick="location.href='/shop/register';" >Sign up</button>
+  {% endif %}
+    </div>
+
+</nav>
+
+
+  {% block body %} {% endblock %}
+
+  <!-----footer---------->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3> Download our app</h3>
+                    <p>Download App for iphone and ios mobile phone</p>
+                </div>
+                <div class="footer-col-2">
+                    <img src="/images/1.png" alt="">
+                    <p>Our purpose is to sustainability make the pleasure and benifits of or accessible to the many.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <a href="% url 'ShopHome' %}"><li> Home</li></a>
+                        <a href="/shop/about"><li> About Us</li></a>
+                        <a href="/shop/tracker"><li> Tracker</li></a>
+                        <a href="/shop/contact"><li> Contact Us</li></a>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">Copyright 2021- Akash</p>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    {% block js %} {% endblock %}
+  </body>
+</html>

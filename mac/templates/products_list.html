@@ -1,0 +1,43 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Order Approval{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h2 class="text-center">Product List</h2> <div><a href="{% url 'product_creation' %}" class="text-success float-right">Create New Product</a></div>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h3><li  {% if message.tags %} class="text-{{ message.tags }} text-center" {% endif %}> {{ message }} </li></h3>
+            {% endfor %}
+        </ul>
+        {% endif %}
+     {% for i in products %}
+        <ul>
+            <a href="{% url 'product_update' pk=i.pk %}"><li class="nav-item">{{i.product_name}}</li></a><span><a href="{% url 'product_delete' pk=i.pk %}" class="text-danger">Delete</a></span>
+        </ul>
+
+     {% endfor %}
+
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  {% endblock %}

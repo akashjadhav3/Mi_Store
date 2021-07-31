@@ -1,0 +1,36 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Order Approval{% endblock %}
+
+
+{% block body %}
+<style>
+  body{
+  background-color:ghostwhite;
+  }
+  .jumbotron{
+  background-color:white;
+  }
+</style>
+
+<main role="main" >
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" >
+    <div class="container" >
+      <h2 class="text-center">Admin Site</h2>
+      
+     <ul class="ul" >
+         <li><a href="{% url 'product_list' %}">Products List</a></li>
+         <li><a href="{% url 'admin_order_approval' %}">Order Approval</a></li>
+         <li><a href="{% url 'contact_us_admin' %}">Contact us messages</a></li>
+     </ul>
+
+      <hr>
+
+    </div> <!-- /container -->
+  
+  </main>
+  
+  
+  {% endblock %}
