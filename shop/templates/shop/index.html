@@ -45,6 +45,15 @@ padding-right: 0;
 .card-title{
 color:black;
 }
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
 {% endblock %}
 
 {% block body %}
@@ -55,7 +64,7 @@ color:black;
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
     <h5 class="my-4">Flash Sale On <u>{{product.0.category}}</u>- Recommended Items</h5>
-    <div class="row">
+    <div class="row mt-5">
         <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
             <ul class="carousel-indicators">
                 <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
@@ -97,6 +106,35 @@ color:black;
         </a>
     </div>
     {% endfor %}
+</div>
+
+<div class="text-center py-3 bg-warning container my-2">All Mobiles</div>
+
+<div class="container">
+<div class="row">
+{% for i in all_products %}
+<div class="col-lg-4 d-flex align-items-stretch mb-4">
+<div class="card-deck">
+  <div class="card">
+    <a href="/shop/products/{{i.id}}" ><img class="card-img-top thumbnail" src="/media/{{i.image}}" alt="Card image cap"></a>
+    <div class="card-body text-center">
+        
+      <a href="/shop/products/{{i.id}}" ><h6 class="card-title">{{i.product_name}}</h6></a> &#8377; {{i.price}}
+      <p>{{i.desc|slice:"0:53"}}...</p>
+    </div>
+    <div class="card-footer card-footer text-center">
+      <small class="text-muted">
+        <span id="divpr{{i.id}}" class="divpr">
+            <button id="pr{{i.id}}" class="btn btn-sm btn-primary cart">Add To Cart</button>     
+            <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-sm btn-primary cart">QuickView</button></a>                
+        </span>
+    </small>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
 </div>
 {% endblock %}
 

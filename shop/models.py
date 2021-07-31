@@ -92,10 +92,13 @@ class Payments(models.Model):
     order_id = models.CharField(max_length=255)
     signature = models.CharField(max_length=255)
     order_related = models.ForeignKey(Orders,on_delete=models.CASCADE,null=True,blank=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.payment_id
 
+
     class Meta:
+        ordering = ('-created',)
         verbose_name = 'payment'
         verbose_name_plural = 'payment'
