@@ -53,7 +53,7 @@
 sagittis lacus vel augue laoreet rutrum faucibus.">
 
 
-  Cart <span class="badge badge-light" id="cart">0</span>
+  <a id="popover" href="{% url 'Checkout' %}" data-trigger="hover">Cart <span class="badge badge-light" id="cart">0</span></a>
 </button>
   </div>
 </nav>
@@ -68,7 +68,9 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     {% block js %} {% endblock %}
   </body>
-  {% comment %} <script>
-  $('#popcart').popover('toggle')
-  </script> {% endcomment %}
+
+    <script>
+    $("#popover").popover({ trigger: "hover focus" });
+  </script>
+
 </html>
