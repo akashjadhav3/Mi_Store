@@ -28,7 +28,8 @@ def index(request):
         nSlides = n // 4 + ceil((n / 4) - (n // 4))
         allProds.append([prod, range(1, nSlides), nSlides])
     isAdmin = IsAdminCheck(request.user)
-    context = {'allProds':allProds,'isAdmin':isAdmin}
+    product = Product.objects.all()
+    context = {'allProds':allProds,'isAdmin':isAdmin,'all_products':product}
     return render(request, 'shop/index.html', context)
 
 # def home(request):
