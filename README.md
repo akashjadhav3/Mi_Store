@@ -14,3 +14,7 @@
 
 #### Run Project
 `python manage.py runserver`
+
+#### Admin access credentials
+username: akash
+password: Akash@123
